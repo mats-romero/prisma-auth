@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" data-state="neutral">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer" />
+    <script>
+      ;(function () {
+        var hash = location.hash
+        var search = location.search
+        try {
+          history.replaceState(null, '', location.pathname)
+        } catch (ignore) {}
+        var taken = false
+        window.__prismaTakeReturn = function () {
+          if (taken) return { hash: '', search: '' }
+          taken = true
+          var value = { hash: hash, search: search }
+          hash = ''
+          search = ''
+          return value
+        }
+      })()
+    </script>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; script-src 'unsafe-inline' 'self'; connect-src https://gaidlqimzyshtkxhuiro.supabase.co; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Confirmación · Prisma</title>
+    <link rel="stylesheet" href="confirm.css" />
+    <link rel="icon" href="prisma-icono.png" />
+  </head>
+  <body>
+    <main id="confirm">
+      <img src="prisma-icono.png" width="72" height="72" alt="Prisma" />
+      <div id="status" aria-live="polite">
+        <h1 id="title">Confirmación de Prisma</h1>
+        <p id="message">
+          Abre esta página desde el enlace del correo. Después entra en la app
+          con tu contraseña.
+        </p>
+      </div>
+    </main>
+    <script type="module" src="boot.js"></script>
+  </body>
+</html>
